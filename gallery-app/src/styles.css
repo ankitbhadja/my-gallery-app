@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.folder-container, .login-container {
+  margin: 20px auto;
+  width: 100%;
+}
+
+.image-container {
+  padding: 24px;
+  border-radius: 16px;
+  background: rgb(205, 204, 205);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.folder-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* .folder-item {
+  display: block;
+  padding: 10px;
+  margin: 10px;
+  background-color: lightblue;
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+} */
+
+.folder-item {
+  display: block;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease; /* Smooth zoom-out effect */
+}
+
+.folder-item:hover {
+  transform: scale(1.05); /* Zoom out the entire item */
+}
+
+.folder-name {
+  position: absolute;
+  bottom: -20px; /* Start hidden at the bottom */
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease, bottom 0.3s ease;
+}
+
+.folder-item:hover .folder-name {
+  bottom: 20px; /* Slide the name up into view */
+  opacity: 1; /* Make the text fully visible */
+}
+.image-list {
+  column-count: 4; /* 4 images per row on laptops */
+  column-gap: 20px; /* Gap between columns */
+  width: 100%; /* Fixed width or full width */
+  max-width: 1200px; /* Example fixed width container */
+  margin: auto; /* Center the container */
+}
+
+.image-item {
+  margin-bottom: 5px; /* Adds space between rows */
+  break-inside: avoid; /* Prevents breaking the image across columns */
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05); /* Zoom effect on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .image-list {
+    column-count: 3; /* 3 images per row on tablets */
+  }
+}
+
+@media (max-width: 767px) {
+  .image-list {
+    column-count: 2; /* 2 images per row on phones */
+  }
+}
+
+
+
+.preview-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-position: "cover";
+}
+
+.nav-btn {
+  position: absolute;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 70%;
+  width: auto;
+  border-color: rgba(249, 251, 251, 0);
+  background-color: rgba(248, 243, 243, 0);
+}
+
+
+
+.nav-btn.left { left: 2px; }
+.nav-btn.right { right: 2px; }
+.close-btn { 
+  top: 10px; right: 10px; 
+  position: absolute;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: rgb(194, 202, 202);
+}
+
+.stop-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ff4d4d; /* Red color for stop action */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.stop-btn:hover {
+  background-color: #cc0000; /* Darker red on hover */
+}
+
+.stop-btn:active {
+  background-color: #a30000; /* Even darker red when clicked */
+}
+.preview-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px; /* Move to the right corner */
+  background-color: #5bf25d; /* Red color for stop action */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  margin-right: 50px;
+}
+
+.preview-btn:hover {
+  background-color: #039c03; /* Darker red on hover */
+}
+
+.preview-btn:active {
+  background-color: #16a300; /* Even darker red when clicked */
+}
+
+
+.image-skeleton {
+  height: 150px;
+  border-radius: 8px;
+  column-count: 4; /* 4 images per row on laptops */
+  column-gap: 20px; /* Gap between columns */
+  width: 100%; /* Fixed width or full width */
+  max-width: 1200px; /* Example fixed width container */
+  margin: 20px;
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+
+/* For image preview */
+
+/* Fullscreen Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fit image to the screen */
+.preview-img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+/* Fullscreen Image */
+.fullscreen-img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Navigation Button Styling */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f8f9fa;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  color: #000;
+  font-size: 24px;
+  transition: background-color 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: #e9ecef;
+}
+
+/* Left Arrow */
+.left-arrow {
+  left: 0px;
+}
+
+/* Right Arrow */
+.right-arrow {
+  right: 0px;
+}
+
+@media (max-width: 768px) {
+  .fullscreen-img {
+    max-width: 95vw;
+    max-height: 70vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .fullscreen-img {
+    max-width: 90vw;
+    max-height: 60vh;
+  }
+}

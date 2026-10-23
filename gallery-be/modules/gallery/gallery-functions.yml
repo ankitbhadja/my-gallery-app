@@ -1,0 +1,30 @@
+functions:
+  fetchSignUrl:
+    handler: ./fetchSignUrl/fetchSignUrl.handler
+    events:
+      - http:
+          path: fetch-sign-url
+          method: get
+          cors:
+            origins:
+              - "*"
+
+  logIn:
+    handler: ./auth/login.handler
+    events:
+      - http:
+          path: login
+          method: post
+          cors:
+            origins:
+              - "*"
+
+  listFolder:
+    handler: ./listFolders/listFolders.handler
+    events:
+      - http:
+          path: list-folders
+          method: get
+          cors:
+            origins:
+              - "*"

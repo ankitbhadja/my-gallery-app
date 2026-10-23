@@ -1,0 +1,27 @@
+{
+    "name": "my-serverless",
+    "version": "1.0.0",
+    "description": "Talk to tucker serverless functions",
+    "private": true,
+    "scripts": {
+        "deploy": "script/stackDeploy.js",
+        "sls-log": "serverless --console",
+        "sls-print": "sls print",
+        "sls-remove-gallery": "cd modules/gallery && sls remove --stage dev --config serverless.yml",
+        "sls-deploy-gallery": "cd modules/gallery && sls deploy --stage dev --config serverless.yml"
+    },
+    "dependencies": {
+        "aws-cloudfront-sign": "^3.0.2",
+        "aws-sdk": "^2.1156.0",
+        "jsonwebtoken": "^9.0.2"
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.0",
+        "commander": "^11.0.0",
+        "esbuild": "^0.14.25",
+        "serverless-dotenv-plugin": "^6.0.0",
+        "serverless-esbuild": "^1.25.0",
+        "serverless-offline": "^8.5.0",
+        "serverless-step-functions": "^3.7.0"
+    }
+}
